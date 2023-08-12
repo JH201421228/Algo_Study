@@ -1,3 +1,13 @@
+'''
+문제구상
+1. 나열된 카드중 k개 원소를 가지는 부분집합 형성(비트연산자)
+2. 부분집합 별 숫자 조합하기(순열)
+3. 중복 숫자 제거(set이용)
+
+개선점
+1. 굳이 부분집합 형성 없이 바로 전체 카드 중 k개를 뽑아 순열로 만드는게 효율적일듯?
+'''
+
 n= int(input())
 k = int(input())
 nums = [int(input()) for _ in range(n)]
@@ -18,11 +28,4 @@ for i in range(1<<n):               # nums의 가능한 부분집합
     else:
         continue
 
-[미완성] #각 부분집합 별 순열 생성하기
-def permutations(lst)
-for part in result:
-    for i in range(len(part)):
-        fix = part[i]
-        rest = part[:i] + part[i+1:]
-
-    new = fix[i] +
+#각 부분집합 별 순열 생성하기
