@@ -2,7 +2,7 @@ n = int(input())
 k = int(input())
 
 
-def perm(lst, n):
+def perm(lst, n):               # 순열을 이용한 모든 경우의 수 계산
     result = []
     if n > len(lst):
         return result
@@ -23,12 +23,12 @@ def perm(lst, n):
 
 num_lst = []
 for _ in range(n):
-    num_lst.append(str(input()))
+    num_lst.append(str(input()))        # n번 입력을 통해 리스트에 카드 추가
 
-my_lst = perm(num_lst, k)
+my_lst = perm(num_lst, k)               # 모든 경우의 수 계산
 
 lst = []
-for i in my_lst:
+for i in my_lst:                        # 1개의 숫자로 만든 후
     lst.append(''.join(i))
 
-print(len(set(lst)))
+print(len(set(lst)))                    # set 통해 중복제거 and 갯수 출력
