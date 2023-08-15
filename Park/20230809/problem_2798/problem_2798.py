@@ -1,5 +1,5 @@
 import sys
-# sys.stdin = open('input.txt')
+sys.stdin = open('input.txt')
 input = sys.stdin.readline
 
 
@@ -15,7 +15,6 @@ for i in range(1<<N):
     for j in range(N):
         if i & (1<<j):
             check_list.append(card_list[j])
-
 
     if len(check_list) == 3:
         sum_val = sum(check_list)

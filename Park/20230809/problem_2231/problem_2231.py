@@ -1,11 +1,11 @@
 import sys
-sys.stdin = open('input.txt')
+# sys.stdin = open('input.txt')
 
 N = int(input())
 
 ans = 0
 
-for num in range(0, N+1): # 브루트 포스
+for num in range(1, N): # 브루트 포스
     sum_num = num # 각 값을 더할 변수
     maybe_ans = num # 답인지 체크할 변수
 
