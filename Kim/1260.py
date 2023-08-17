@@ -13,7 +13,7 @@ v_dfs = [False] * (n+1)
 v_bfs = [False] * (n+1)
 
 
-def dfs(start):
+def dfs(start):             # 재귀이용
     v_dfs[start] = True
     print(start, end=' ')
     for j in graph[start]:
@@ -21,7 +21,7 @@ def dfs(start):
             dfs(j)
 
 
-def bfs(start):
+def bfs(start):             # while문, 재귀 X, 큐에 계속 다음 노드 넣음
     q = deque([start])
     v_bfs[start] = True
     while q:
