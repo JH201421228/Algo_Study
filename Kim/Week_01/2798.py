@@ -22,3 +22,6 @@ for i in score_lst:     # m을 넘지않는 최대값 구하기
         break
 
 print(ans)
+
+# 5 21
+# 5 6 7 8 9
