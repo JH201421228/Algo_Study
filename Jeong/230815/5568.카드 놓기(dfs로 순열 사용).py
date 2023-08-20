@@ -23,6 +23,3 @@ num = [0] * k           #각 순열의 값을 담을 리스트
 result = set()          #완성된 모든 순열을 담을 세트
 dfs(0)
 print(len(result))
-
-
-
