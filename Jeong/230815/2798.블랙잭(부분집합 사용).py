@@ -8,6 +8,7 @@ nums = list(map(int,input().split()))
 
 #원소 3개짜리 부분집합 생성
 part_ls = []
+
 for i in range(1<<N):
     part = []
     if bin(i).count('1') == 3:
