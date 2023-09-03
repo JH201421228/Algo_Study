@@ -16,4 +16,10 @@ for _ in range(int(input())):       # 양방향 인접리스트 생성
 v = [False] * (n + 1)       # 컴퓨터 1부터 저장하기위해 +1
 dfs(1, v)                   # 1번부터 시작
 
+print(v)
 print(v[2:].count(True))    # 1번에 의해 감염되는 컴퓨터 수
+print(graph)
+'''
+0 0 0 1 1 0
+1 0
+'''
