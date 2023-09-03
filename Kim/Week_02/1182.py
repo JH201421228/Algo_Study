@@ -10,6 +10,7 @@ def dfs(length, start, ans, visited):   # 부분수열 길이, 탐색 시작위�
             visited[j] = False                          # j번째까지 봤으니까 다음은 j +1부터
                                                         # arr[j]를 부분합에 추가
 
+
 n, s = map(int, input().split())
 arr = list(map(int, input().split()))
 v = [False] * n
@@ -20,3 +21,4 @@ for i in range(1, n+1):     # 부분수열 길이
     dfs(0, 0, 0, v)         # 함수 호출(부분수열길이, 탐색시작위치, 부분합, 방문리스트)
 
 print(my_lst.count(s))      # 원하는 값이 몇개가 나오는가?
+print(my_lst)
