@@ -1,36 +1,39 @@
-def check(num, i, j):
-    for k in range(9):
-        if Board[i][k] == num:
-            return False
-        if Board[k][j] == num:
-            return False
-    M = (i//3)*3
-    N = (j//3)*3
-    for m in range(M, M+3):
-        for n in range(N, N+3):
-            if Board[m][n] == num:
+def checker(i, j, n):
+    for idx in range(9):
+        if idx != j:
+            if sudoku[i][idx] == n:
                 return False
+        if idx != i:
+            if sudoku[idx][j] == n:
+                return False
+
+    for x in range(i//3 * 3, i//3 * 3 + 3):
+        for y in range(j//3 * 3, j//3 * 3 + 3):
+            if x != i and y != j:
+                if sudoku[x][y] == n:
+                    return False
     return True
 
-def DFS(N):
-    if N == 0:
-        for i in range(9):
-            print(*Board[i])
+
+def this_game(start):
+    if start == len(start_point):
+        for inner in sudoku:
+            print(*inner)
+        # print(sudoku)
         exit(0)
 
-    i, j = Blank.pop()
-    for num in range(1, 10):
-        if check(num, i, j):
-            Board[i][j] = num
-            DFS(N-1)
-            Board[i][j] = 0
-    return False
+    now_i, now_j = start_point[start]
+    for num in range(9, 0, -1):
+        sudoku[now_i][now_j] = num
+        if checker(now_i, now_j, num):
+            this_game(start+1)
+        sudoku[now_i][now_j] = 0
 
-Board = [list(map(int, input().split())) for _ in range(9)]
-Blank = []
-for i in range(9):
-    for j in range(9):
-        if Board[i][j] == 0:
-            Blank.append((i, j))
-N = len(Blank)
-DFS(N)
+
+sudoku = [list(map(int, input().split())) for _ in range(9)]
+start_point = []
+for idx_i in range(9):
+    for idx_j in range(9):
+        if not sudoku[idx_i][idx_j]:
+            start_point.append([idx_i, idx_j])
+this_game(0)
