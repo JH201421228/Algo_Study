@@ -23,21 +23,6 @@ def backtrack(id):  # 백트래킹 함수
     return False
 
 
-def is_valid(x, y, num):  # 유효성 검사 함수
-    for i in range(9):
-        if sudo[x][i] == num:
-            return False
-        if sudo[i][y] == num:
-            return False
-
-    box_x, box_y = (x // 3) * 3, (y // 3) * 3
-    for i in range(box_x, box_x + 3):
-        for j in range(box_y, box_y + 3):
-            if sudo[i][j] == num:
-                return False
-    return True
-
-
 def init():  # 채울 수 있는건 채우는 함수
     zero_can = [set(i for i in range(1, 10)) for _ in range(len(zero_coor))]
     cnt = 0
@@ -50,7 +35,7 @@ def init():  # 채울 수 있는건 채우는 함수
             for k in range(box_y, box_y + 3):
                 zero_can[cnt].discard(sudo[j][k])
         cnt += 1
-    # print(zero_can)
+    print(zero_can)
 
     while not all(len(l) != 1 for l in zero_can):
         for i in range(len(zero_can)):
@@ -75,6 +60,21 @@ def update(x, y, n, lst):  # 확실하게 채울거 채우고나서 후보군 �
         cnt += 1
 
 
+def is_valid(x, y, num):  # 유효성 검사 함수
+    for i in range(9):
+        if sudo[x][i] == num:
+            return False
+        if sudo[i][y] == num:
+            return False
+
+    box_x, box_y = (x // 3) * 3, (y // 3) * 3
+    for i in range(box_x, box_x + 3):
+        for j in range(box_y, box_y + 3):
+            if sudo[i][j] == num:
+                return False
+    return True
+
+
 sudo = [list(map(int, input().split())) for _ in range(9)]
 zero_coor = []  # 비어있는 자리 튜플로 추가
 # print(sudo)
@@ -84,7 +84,7 @@ for i in range(9):
         if not sudo[i][j]:
             zero_coor.append((i, j))
 
-# print(zero_coor)
+print(zero_coor)
 
 sudoku()
 for i in sudo:
