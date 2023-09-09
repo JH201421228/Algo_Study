@@ -4,13 +4,11 @@ def row(a, n):  # 가로
             return False
     return True
 
-
 def column(a, n):  # 세로
     for i in range(9):
         if n == sudoku[i][a]:  # 이미 있으면
             return False
     return True
-
 
 def square(y, x, n):  # 3x3 칸
     for i in range(3):
@@ -18,7 +16,6 @@ def square(y, x, n):  # 3x3 칸
             if n == sudoku[y // 3 * 3 + i][x // 3 * 3 + j]:  # 칸내에 이미 있으면
                 return False
     return True
-
 
 def find(n):
     if n == len(blank):  # 빈 공간 만큼 사용했으면
@@ -34,9 +31,7 @@ def find(n):
             find(n + 1)
             sudoku[y][x] = 0
 
-
 import sys
-
 sudoku = [list(map(int, sys.stdin.readline().split())) for _ in range(9)]
 blank = []
 for i in range(9):
