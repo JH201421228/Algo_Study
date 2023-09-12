@@ -22,11 +22,11 @@ def squ_check(x, y, n):         # 3X3 검증
                 return False
     return True
 
-def sudoku_solution(cnt):                   
-    if cnt == len(blank):                                                   # 다 돌았으면 빈칸이 없을꺼니까 
+def sudoku_solution(cnt):
+    if cnt == len(blank):                                                   # 다 돌았으면 빈칸이 없을꺼니까
         for k in range(9):                                                  # 9줄 반환
             print(*sudoku[k])                                               # 언패킹 오퍼레이터
-        exit()                                                              # 함수 탈출 (이거 없으면 답 안나옴)
+        exit()                                                             # 함수 탈출 (이거 없으면 답 안나옴)
     x, y = blank[cnt][0], blank[cnt][1]
     for k in range(1, 10):
         if row_check(x, k) and col_check(y, k) and squ_check(x, y, k):      # 검증 완료 됬을 때 즉 겹치는 숫자가 없을 때
@@ -38,6 +38,7 @@ sudoku = [list(map(int, input().split())) for _ in range(9)]
 blank = []      # 0인 자리 즉 빵꾸난 자리 찾기
 for i in range(9):
     for j in range(9):
-        if not sudoku[i][j]:        # 0 == False
+        if not sudoku[i][j]:                                                # 0 == False
             blank.append([i, j])
+
 sudoku_solution(0)

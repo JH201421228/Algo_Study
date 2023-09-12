@@ -45,6 +45,9 @@ if flag:
     visited = [False] * len(char_lst)
     dfs(0, 0, [], list(char_lst), visited)      # 가르칠 수 있는 글자 수(possible)로 이루어진 조합
 
+    print(char)
+    print(char_lst)
+
     max_count = 0   # 최대 단어 개수
     for k in range(len(combination)):   # 조합 종류 수만큼
         cnt = 0             # 단어 개수 초기화
@@ -58,7 +61,7 @@ if flag:
                     temp += 1       # 포함 되어 있다면 temp + 1
             if temp == len(char[i]):    # temp와 단어 길이가 같다면
                 cnt += 1            # 읽을 수 있는 글자
-        max_count = max(max_count, cnt) # 최대값 비교 (리스트에 다 넣고 비교하면 시간초과남)
+        max_count = max(max_count,cnt) # 최대값 비교 (리스트에 다 넣고 비교하면 시간초과남)
     print(max_count)
 
 else:       # K가 4보다 작으면 무조건 0
