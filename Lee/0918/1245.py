@@ -7,23 +7,45 @@ input = sys.stdin.readline
 di = [-1, -1, -1, 0, 1, 1, 1, 0]
 dj = [-1, 0, 1, 1, 1, 0, -1, -1]
 
-# Check 함수(8방향에 더 큰 수가 존재하는가?)
+# Check 함수(8방향에 더 큰 수가 존재하는가?) -> 존재하면 False , 없다면 True, 같은 애들은 리스트로 반환
 def check(i, j):
     center = Board[i][j]
+    more = []
     for k in range(8):
         ni = i + di[k]
         nj = j + dj[k]
-        if ni>N or ni<0 or nj>M or nj<0:
+        if ni>=N or ni<0 or nj>=M or nj<0:
             continue
-        if Board[ni][nj] > center:
-            return False
-        elif Board[ni][nj] < center:
-            visited[ni][nj] = 1
-    return True
+        if visited[ni][nj] == 0:
+            if Board[ni][nj] > center:
+                return False
+            elif Board[ni][nj] < center:
+                visited[ni][nj] = 1
+            else:
+                more.append((ni, nj))
+                visited[ni][nj] = 1
+        else:
+            continue
+    if more:
+        return more
+    else:
+        return True
 
 def BFS(i, j):
     global cnt
     Q = deque([(i, j)])
+    while Q:
+        now = Q.popleft()
+        A = check(now[0], now[1])
+        if A == True:
+            continue
+        elif type(A)== bool:
+            cnt += 1
+        elif type(A)==list:
+            Q.extend(A)
+
+
+
 
 N, M = map(int, input().split())
 Board = [list(map(int, input().split())) for _ in range(N)]
@@ -31,7 +53,12 @@ visited = [[0]*M for _ in range(N)]
 cnt = 0
 for i in range(N):
     for j in range(M):
-        if visited
+        if visited[i][j] == 1:
+            continue
+        else:
+            BFS(i, j)
+print(cnt)
+
 
 
 # 1. 완전탐색(이중포문)

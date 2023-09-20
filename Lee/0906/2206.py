@@ -1,7 +1,5 @@
 from collections import deque
-from copy import deepcopy
 import sys
-
 
 sys.stdin = open('2206.txt')
 
@@ -10,7 +8,7 @@ dy = [1, 0, -1, 0]
 
 
 def BFS(start):
-    visited = deepcopy(A)
+    visited = [[-1] * M for _ in range(N)]
     visited[start[0]][start[1]] = 1
     Q = deque([start])
     while Q:
@@ -25,7 +23,6 @@ def BFS(start):
 
 N, M = map(int, input().split())
 Board = [list(map(int, input())) for _ in range(N)]
-A = [[-1] * M for _ in range(N)]
 can_one=[(0, 0)]
 for i in range(N):
     for j in range(M):
